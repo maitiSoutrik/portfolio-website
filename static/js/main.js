@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         setupContactForm();
     }
+
+    setupDarkModeToggle();
 });
 
 async function fetchGitHubProjects() {
@@ -37,7 +39,7 @@ function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'col-md-6 col-lg-4 mb-4';
     card.innerHTML = `
-        <div class="card project-card bg-dark text-light h-100">
+        <div class="card project-card h-100">
             <div class="card-body">
                 <h5 class="card-title">${project.name}</h5>
                 <p class="card-text">${project.description || 'No description available.'}</p>
@@ -49,7 +51,7 @@ function createProjectCard(project) {
                 </p>
             </div>
             <div class="card-footer">
-                <a href="${project.html_url}" target="_blank" class="btn btn-outline-light btn-sm">View on GitHub</a>
+                <a href="${project.html_url}" target="_blank" class="btn btn-outline-primary btn-sm">View on GitHub</a>
             </div>
         </div>
     `;
@@ -86,4 +88,21 @@ function setupContactForm() {
             alert('An error occurred. Please try again later.');
         }
     });
+}
+
+function setupDarkModeToggle() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const htmlElement = document.documentElement;
+    
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    }
 }

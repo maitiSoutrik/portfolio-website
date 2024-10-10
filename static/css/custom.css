@@ -25,7 +25,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bs-dark);
+    background: var(--bs-body-bg);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -35,4 +35,36 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--bs-primary);
+}
+
+/* Dark mode specific styles */
+[data-bs-theme="dark"] .bg-light {
+    background-color: var(--bs-dark) !important;
+}
+
+[data-bs-theme="dark"] .text-dark {
+    color: var(--bs-light) !important;
+}
+
+/* Light mode specific styles */
+[data-bs-theme="light"] .bg-dark {
+    background-color: var(--bs-light) !important;
+}
+
+[data-bs-theme="light"] .text-light {
+    color: var(--bs-dark) !important;
+}
+
+[data-bs-theme="light"] .navbar-dark {
+    background-color: var(--bs-primary) !important;
+}
+
+[data-bs-theme="light"] .card {
+    background-color: var(--bs-light);
+    border: 1px solid var(--bs-gray-300);
+}
+
+[data-bs-theme="light"] .card-footer {
+    background-color: var(--bs-gray-100);
+    border-top: 1px solid var(--bs-gray-300);
 }
