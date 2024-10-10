@@ -37,6 +37,17 @@ html {
     background: var(--bs-primary);
 }
 
+/* Dark mode toggle button */
+#darkModeToggle {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    transform: scale(1.1);
+}
+
 /* Dark mode specific styles */
 [data-bs-theme="dark"] .bg-light {
     background-color: var(--bs-dark) !important;
@@ -44,6 +55,20 @@ html {
 
 [data-bs-theme="dark"] .text-dark {
     color: var(--bs-light) !important;
+}
+
+[data-bs-theme="dark"] .navbar-dark {
+    background-color: var(--bs-dark) !important;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: var(--bs-dark);
+    border: 1px solid var(--bs-gray-700);
+}
+
+[data-bs-theme="dark"] .card-footer {
+    background-color: var(--bs-gray-800);
+    border-top: 1px solid var(--bs-gray-700);
 }
 
 /* Light mode specific styles */

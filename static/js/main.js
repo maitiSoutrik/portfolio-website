@@ -99,9 +99,13 @@ function setupDarkModeToggle() {
             if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
                 htmlElement.setAttribute('data-bs-theme', 'light');
                 darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                darkModeToggle.classList.remove('btn-outline-light');
+                darkModeToggle.classList.add('btn-outline-dark');
             } else {
                 htmlElement.setAttribute('data-bs-theme', 'dark');
                 darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                darkModeToggle.classList.remove('btn-outline-dark');
+                darkModeToggle.classList.add('btn-outline-light');
             }
         });
     }
