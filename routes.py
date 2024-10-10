@@ -56,25 +56,42 @@ def new_post():
 
 @app.route('/timeline')
 def timeline():
-    # For now, we'll use hardcoded data. In a real application, this would come from a database.
     experiences = [
         {
             'title': 'Senior Embedded Software Engineer',
             'company': 'TechCorp',
             'period': 'Jan 2020 - Present',
-            'description': 'Leading embedded software development for IoT devices.'
+            'description': 'Leading embedded software development for IoT devices.',
+            'responsibilities': [
+                'Architecting and implementing firmware for various IoT devices',
+                'Optimizing power consumption and performance of embedded systems',
+                'Mentoring junior engineers and leading cross-functional teams'
+            ],
+            'technologies': 'C, C++, FreeRTOS, ARM Cortex-M, Bluetooth Low Energy, Zigbee'
         },
         {
             'title': 'Embedded Software Engineer',
             'company': 'InnovativeSystems',
             'period': 'Jun 2017 - Dec 2019',
-            'description': 'Developed firmware for automotive control systems.'
+            'description': 'Developed firmware for automotive control systems.',
+            'responsibilities': [
+                'Designing and implementing real-time software for automotive ECUs',
+                'Integrating and testing CAN, LIN, and FlexRay communication protocols',
+                'Collaborating with hardware engineers to optimize system performance'
+            ],
+            'technologies': 'C, AUTOSAR, MISRA C, Vector CANoe, ETAS ASCET'
         },
         {
             'title': 'Junior Software Developer',
             'company': 'StartupTech',
             'period': 'Sep 2015 - May 2017',
-            'description': 'Worked on embedded Linux systems for smart home devices.'
+            'description': 'Worked on embedded Linux systems for smart home devices.',
+            'responsibilities': [
+                'Developing and maintaining Linux device drivers',
+                'Implementing user-space applications for smart home control',
+                'Assisting in the design and implementation of OTA update mechanisms'
+            ],
+            'technologies': 'C, Python, Embedded Linux, Yocto Project, Git, Jenkins'
         }
     ]
     return render_template('timeline.html', experiences=experiences)
