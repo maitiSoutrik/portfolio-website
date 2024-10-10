@@ -53,3 +53,28 @@ def new_post():
         db.session.commit()
         return redirect(url_for('blog'))
     return render_template('new_post.html')
+
+@app.route('/timeline')
+def timeline():
+    # For now, we'll use hardcoded data. In a real application, this would come from a database.
+    experiences = [
+        {
+            'title': 'Senior Embedded Software Engineer',
+            'company': 'TechCorp',
+            'period': 'Jan 2020 - Present',
+            'description': 'Leading embedded software development for IoT devices.'
+        },
+        {
+            'title': 'Embedded Software Engineer',
+            'company': 'InnovativeSystems',
+            'period': 'Jun 2017 - Dec 2019',
+            'description': 'Developed firmware for automotive control systems.'
+        },
+        {
+            'title': 'Junior Software Developer',
+            'company': 'StartupTech',
+            'period': 'Sep 2015 - May 2017',
+            'description': 'Worked on embedded Linux systems for smart home devices.'
+        }
+    ]
+    return render_template('timeline.html', experiences=experiences)

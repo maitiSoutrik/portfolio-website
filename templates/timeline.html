@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Work Experience Timeline</h2>
+        <div class="timeline">
+            {% for experience in experiences %}
+            <div class="timeline-item">
+                <div class="timeline-badge bg-primary"></div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ experience.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ experience.company }}</h6>
+                        <p class="card-text">{{ experience.period }}</p>
+                        <p class="card-text">{{ experience.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    timelineItems.forEach(item => {
+        observer.observe(item);
+    });
+});
+</script>
+{% endblock %}

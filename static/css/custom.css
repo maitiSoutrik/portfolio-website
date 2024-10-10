@@ -93,3 +93,77 @@ html {
     background-color: var(--bs-gray-100);
     border-top: 1px solid var(--bs-gray-300);
 }
+
+/* Timeline styles */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--bs-primary);
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+    width: 50%;
+    padding: 0 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.timeline-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+}
+
+.timeline-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-badge {
+    left: auto;
+    right: -10px;
+}
+
+@media (max-width: 767px) {
+    .timeline::before {
+        left: 10px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+        margin-left: 0;
+    }
+    
+    .timeline-badge {
+        left: 0;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-badge {
+        left: 0;
+        right: auto;
+    }
+}
