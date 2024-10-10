@@ -21,14 +21,16 @@ def github_projects():
 @app.route('/api/contact', methods=['POST'])
 def contact():
     data = request.json
-    new_contact = Contact(
-        name=data['name'],
-        email=data['email'],
-        message=data['message']
-    )
-    db.session.add(new_contact)
-    db.session.commit()
-    return jsonify({'message': 'Contact form submitted successfully'}), 201
+    if data:
+        new_contact = Contact(
+            name=data.get('name'),
+            email=data.get('email'),
+            message=data.get('message')
+        )
+        db.session.add(new_contact)
+        db.session.commit()
+        return jsonify({'message': 'Contact form submitted successfully'}), 201
+    return jsonify({'error': 'Invalid data'}), 400
 
 @app.route('/blog')
 def blog():

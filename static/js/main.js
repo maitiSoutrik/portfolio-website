@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchGitHubProjects();
-    setupContactForm();
+    const projectsContainer = document.getElementById('projects-container');
+    if (projectsContainer) {
+        fetchGitHubProjects();
+    }
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        setupContactForm();
+    }
 });
 
 async function fetchGitHubProjects() {
@@ -15,6 +22,9 @@ async function fetchGitHubProjects() {
 
 function displayProjects(projects) {
     const projectsContainer = document.getElementById('projects-container');
+    if (!projectsContainer) {
+        return;
+    }
     projectsContainer.innerHTML = '';
 
     projects.forEach(project => {
@@ -48,6 +58,9 @@ function createProjectCard(project) {
 
 function setupContactForm() {
     const contactForm = document.getElementById('contact-form');
+    if (!contactForm) {
+        return;
+    }
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(contactForm);
