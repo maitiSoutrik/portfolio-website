@@ -66,11 +66,11 @@ function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'col-md-6 col-lg-4 mb-4';
     
-    const imageUrl = extractImageFromReadme(project.readmeContent) || '/static/img/placeholder.png';
+    const imageUrl = extractImageFromReadme(project.readmeContent) || '/static/img/placeholder.svg';
     
     card.innerHTML = `
         <div class="card project-card h-100">
-            <img src="${imageUrl}" class="card-img-top" alt="${project.name} image" onerror="this.src='/static/img/placeholder.png'">
+            <img src="${imageUrl}" class="card-img-top" alt="${project.name} image" onerror="this.src='/static/img/placeholder.svg'">
             <div class="card-body">
                 <h5 class="card-title">${project.name}</h5>
                 <p class="card-text">${project.description || 'No description available.'}</p>
