@@ -4,74 +4,47 @@
 <section class="py-5">
     <div class="container">
         <h2 class="text-center mb-5">Work Experience Timeline</h2>
-        <div class="timeline">
-            {% for experience in experiences %}
-            <div class="timeline-item">
-                <div class="timeline-badge"></div>
-                <div class="timeline-content">
-                    <h5 class="card-title">{{ experience.title }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ experience.company }}</h6>
-                    <p class="card-text">{{ experience.period }}</p>
-                    <p class="card-text">{{ experience.description }}</p>
-                    <button class="btn btn-outline-primary btn-sm toggle-details" data-target="details-{{ loop.index }}">
-                        Show Details
-                    </button>
-                    <div id="details-{{ loop.index }}" class="mt-3 experience-details">
-                        <h6>Key Responsibilities:</h6>
-                        <ul>
-                            {% for responsibility in experience.responsibilities %}
-                            <li>{{ responsibility }}</li>
-                            {% endfor %}
-                        </ul>
-                        <h6>Technologies Used:</h6>
-                        <p>{{ experience.technologies }}</p>
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="timeline-nav sticky-top" style="top: 20px;">
+                    <ul class="nav flex-column">
+                        {% for experience in experiences %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#experience-{{ loop.index }}">{{ experience.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-9">
+                <div class="timeline">
+                    {% for experience in experiences %}
+                    <div id="experience-{{ loop.index }}" class="timeline-item">
+                        <div class="timeline-badge"></div>
+                        <div class="timeline-content">
+                            <h5 class="card-title">{{ experience.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ experience.company }}</h6>
+                            <p class="card-text">{{ experience.period }}</p>
+                            <p class="card-text">{{ experience.description }}</p>
+                            <button class="btn btn-outline-primary btn-sm toggle-details" data-target="details-{{ loop.index }}">
+                                Show Details
+                            </button>
+                            <div id="details-{{ loop.index }}" class="mt-3 experience-details">
+                                <h6>Key Responsibilities:</h6>
+                                <ul>
+                                    {% for responsibility in experience.responsibilities %}
+                                    <li>{{ responsibility }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <h6>Technologies Used:</h6>
+                                <p>{{ experience.technologies }}</p>
+                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const toggleButtons = document.querySelectorAll('.toggle-details');
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    timelineItems.forEach(item => {
-        observer.observe(item);
-    });
-
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-target');
-            const targetElement = document.getElementById(targetId);
-            if (targetElement.classList.contains('show')) {
-                targetElement.classList.remove('show');
-                button.textContent = 'Show Details';
-            } else {
-                targetElement.classList.add('show');
-                button.textContent = 'Hide Details';
-            }
-        });
-    });
-});
-</script>
 {% endblock %}

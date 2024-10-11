@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setupDarkModeToggle();
+    setupTimeline();
 });
 
 async function fetchGitHubProjects() {
@@ -167,4 +168,54 @@ function setupDarkModeToggle() {
             }
         });
     }
+}
+
+function setupTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const toggleButtons = document.querySelectorAll('.toggle-details');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    timelineItems.forEach(item => {
+        observer.observe(item);
+    });
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+            const targetElement = document.getElementById(targetId);
+            if (targetElement.classList.contains('show')) {
+                targetElement.classList.remove('show');
+                button.textContent = 'Show Details';
+            } else {
+                targetElement.classList.add('show');
+                button.textContent = 'Hide Details';
+            }
+        });
+    });
+
+    const timelineNavLinks = document.querySelectorAll('.timeline-nav a');
+    timelineNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    });
 }
