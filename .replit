@@ -19,6 +19,10 @@ args = "Start Flask App"
 task = "workflow.run"
 args = "Create Sample Posts"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Git Operations"
+
 [[workflows.workflow]]
 name = "Start Flask App"
 author = "agent"
@@ -41,6 +45,17 @@ agentRequireRestartOnSave = false
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python create_sample_posts.py"
+
+[[workflows.workflow]]
+name = "Git Operations"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add .gitignore && git commit -m 'Add .gitignore file'"
 
 [deployment]
 run = ["sh", "-c", "python main.py"]

@@ -1,98 +1,4 @@
-/* Custom styles */
-.project-card {
-    height: 100%;
-}
-
-.skill-badge {
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.profile-img {
-    width: 200px;
-    height: 200px;
-}
-
-/* Smooth scroll behavior */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bs-body-bg);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--bs-secondary);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--bs-primary);
-}
-
-/* Dark mode toggle button */
-#darkModeToggle {
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-#darkModeToggle:hover {
-    transform: scale(1.1);
-}
-
-/* Dark mode specific styles */
-[data-bs-theme="dark"] .bg-light {
-    background-color: var(--bs-dark) !important;
-}
-
-[data-bs-theme="dark"] .text-dark {
-    color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .navbar-dark {
-    background-color: var(--bs-dark) !important;
-}
-
-[data-bs-theme="dark"] .card {
-    background-color: var(--bs-dark);
-    border: 1px solid var(--bs-gray-700);
-}
-
-[data-bs-theme="dark"] .card-footer {
-    background-color: var(--bs-gray-800);
-    border-top: 1px solid var(--bs-gray-700);
-}
-
-/* Light mode specific styles */
-[data-bs-theme="light"] .bg-dark {
-    background-color: var(--bs-light) !important;
-}
-
-[data-bs-theme="light"] .text-light {
-    color: var(--bs-dark) !important;
-}
-
-[data-bs-theme="light"] .navbar-dark {
-    background-color: var(--bs-primary) !important;
-}
-
-[data-bs-theme="light"] .card {
-    background-color: var(--bs-light);
-    border: 1px solid var(--bs-gray-300);
-}
-
-[data-bs-theme="light"] .card-footer {
-    background-color: var(--bs-gray-100);
-    border-top: 1px solid var(--bs-gray-300);
-}
+/* Existing styles... */
 
 /* Timeline styles */
 .timeline {
@@ -117,7 +23,7 @@ html {
     padding: 0 40px;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 .timeline-item.animate {
@@ -136,11 +42,20 @@ html {
     position: absolute;
     top: 0;
     left: -10px;
+    background-color: var(--bs-primary);
+    border: 3px solid var(--bs-body-bg);
 }
 
 .timeline-item:nth-child(even) .timeline-badge {
     left: auto;
     right: -10px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: var(--bs-body-bg);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 767px) {
@@ -166,4 +81,23 @@ html {
         left: 0;
         right: auto;
     }
+}
+
+/* Enhance the details toggle button */
+.toggle-details {
+    transition: all 0.3s ease;
+}
+
+.toggle-details:hover {
+    transform: scale(1.05);
+}
+
+.experience-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.experience-details.show {
+    max-height: 1000px;
 }
