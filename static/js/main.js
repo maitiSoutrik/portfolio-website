@@ -16,10 +16,23 @@ async function fetchGitHubProjects() {
     try {
         const response = await fetch('/api/github_projects');
         const projects = await response.json();
-        displayProjects(projects);
+        const filteredProjects = filterProjects(projects);
+        displayProjects(filteredProjects);
     } catch (error) {
         console.error('Error fetching GitHub projects:', error);
     }
+}
+
+function filterProjects(projects) {
+    const allowedProjects = [
+        'CppND-Route-Planning-Project',
+        'EmbeddedC-Game-Dev-Pong-Replica',
+        'CppND-System-Monitor',
+        'CppND-Memory-Management-Chatbot',
+        'CppND-Program-a-Concurrent-Traffic-Simulation',
+        'makingEmbeddedSystems'
+    ];
+    return projects.filter(project => allowedProjects.includes(project.name));
 }
 
 function displayProjects(projects) {
@@ -49,12 +62,33 @@ function createProjectCard(project) {
                         <i class="fas fa-code-branch ml-2"></i> ${project.forks_count}
                     </small>
                 </p>
+                <p class="card-text">
+                    <small class="text-muted">Language: ${project.language || 'Not specified'}</small>
+                </p>
             </div>
             <div class="card-footer">
                 <a href="${project.html_url}" target="_blank" class="btn btn-outline-primary btn-sm">View on GitHub</a>
+                <button class="btn btn-outline-secondary btn-sm float-end toggle-details" data-target="details-${project.id}">
+                    Show Details
+                </button>
+            </div>
+            <div id="details-${project.id}" class="card-body project-details" style="display: none;">
+                <h6>Last Updated: ${new Date(project.updated_at).toLocaleDateString()}</h6>
+                <h6>Open Issues: ${project.open_issues_count}</h6>
+                <h6>License: ${project.license ? project.license.name : 'Not specified'}</h6>
             </div>
         </div>
     `;
+
+    const toggleButton = card.querySelector('.toggle-details');
+    const detailsSection = card.querySelector(`#details-${project.id}`);
+
+    toggleButton.addEventListener('click', () => {
+        const isHidden = detailsSection.style.display === 'none';
+        detailsSection.style.display = isHidden ? 'block' : 'none';
+        toggleButton.textContent = isHidden ? 'Hide Details' : 'Show Details';
+    });
+
     return card;
 }
 
