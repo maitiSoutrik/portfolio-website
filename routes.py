@@ -1,3 +1,4 @@
+import os
 import requests
 from flask import render_template, request, jsonify, redirect, url_for
 from app import app, db
@@ -11,7 +12,8 @@ def index():
 def github_projects():
     username = 'maitiSoutrik'
     url = f'https://api.github.com/users/{username}/repos'
-    response = requests.get(url)
+    headers = {'Authorization': f'token {os.environ.get("GITHUB_TOKEN")}'}
+    response = requests.get(url, headers=headers)
     if response.status_code == 200:
         projects = response.json()
         return jsonify(projects)

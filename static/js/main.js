@@ -17,7 +17,8 @@ async function fetchGitHubProjects() {
         const response = await fetch('/api/github_projects');
         const projects = await response.json();
         const filteredProjects = filterProjects(projects);
-        displayProjects(filteredProjects);
+        const projectsWithReadme = await Promise.all(filteredProjects.map(fetchReadmeContent));
+        displayProjects(projectsWithReadme);
     } catch (error) {
         console.error('Error fetching GitHub projects:', error);
     }
@@ -33,6 +34,19 @@ function filterProjects(projects) {
         'makingEmbeddedSystems'
     ];
     return projects.filter(project => allowedProjects.includes(project.name));
+}
+
+async function fetchReadmeContent(project) {
+    try {
+        const readmeResponse = await fetch(`https://api.github.com/repos/${project.full_name}/readme`);
+        const readmeData = await readmeResponse.json();
+        const readmeContent = atob(readmeData.content);
+        project.readmeContent = readmeContent;
+    } catch (error) {
+        console.error(`Error fetching README for ${project.name}:`, error);
+        project.readmeContent = '';
+    }
+    return project;
 }
 
 function displayProjects(projects) {
@@ -51,8 +65,12 @@ function displayProjects(projects) {
 function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'col-md-6 col-lg-4 mb-4';
+    
+    const imageUrl = extractImageFromReadme(project.readmeContent) || '/static/img/placeholder.png';
+    
     card.innerHTML = `
         <div class="card project-card h-100">
+            <img src="${imageUrl}" class="card-img-top" alt="${project.name} image" onerror="this.src='/static/img/placeholder.png'">
             <div class="card-body">
                 <h5 class="card-title">${project.name}</h5>
                 <p class="card-text">${project.description || 'No description available.'}</p>
@@ -90,6 +108,12 @@ function createProjectCard(project) {
     });
 
     return card;
+}
+
+function extractImageFromReadme(readmeContent) {
+    const imageRegex = /!\[.*?\]\((.*?)\)/;
+    const match = readmeContent.match(imageRegex);
+    return match ? match[1] : null;
 }
 
 function setupContactForm() {
