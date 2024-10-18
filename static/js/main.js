@@ -2,11 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectsContainer = document.getElementById('projects-container');
     if (projectsContainer) {
         fetchGitHubProjects();
+    } else {
+        console.error('Projects container not found');
     }
 
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         setupContactForm();
+    } else {
+        console.error('Contact form not found');
     }
 
     setupDarkModeToggle();

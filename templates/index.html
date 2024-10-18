@@ -66,20 +66,21 @@
         <h2 class="text-center mb-4">Contact Me</h2>
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <form id="contact-form">
+                <form id="contact-form" aria-labelledby="contact-form-title">
+                    <h3 id="contact-form-title" class="visually-hidden">Contact Form</h3>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required aria-labelledby="nameHelp">
+                        <input type="text" class="form-control" id="name" name="name" required aria-describedby="nameHelp" aria-required="true">
                         <div id="nameHelp" class="form-text">Please enter your full name.</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required aria-labelledby="emailHelp">
+                        <input type="email" class="form-control" id="email" name="email" required aria-describedby="emailHelp" aria-required="true">
                         <div id="emailHelp" class="form-text">Your email will be used to respond to your message.</div>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required aria-labelledby="messageHelp"></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="5" required aria-describedby="messageHelp" aria-required="true"></textarea>
                         <div id="messageHelp" class="form-text">Please provide details about your inquiry or message.</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
