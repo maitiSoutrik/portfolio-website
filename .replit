@@ -58,6 +58,7 @@ task = "shell.exec"
 args = "git add .gitignore && git commit -m 'Add .gitignore file'"
 
 [deployment]
+deploymentTarget = "cloudrun"
 run = ["sh", "-c", "python main.py"]
 
 [[ports]]
