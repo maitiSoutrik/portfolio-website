@@ -1,8 +1,12 @@
 import os
 import requests
-from flask import render_template, request, jsonify, redirect, url_for
+from flask import render_template, request, jsonify, redirect, url_for, send_file
 from app import app, db
 from models import Contact, BlogPost
+from generate_resume import generate_resume
+
+# Generate the resume PDF when the application starts
+generate_resume()
 
 @app.route('/')
 def index():
@@ -97,3 +101,7 @@ def timeline():
         }
     ]
     return render_template('timeline.html', experiences=experiences)
+
+@app.route('/download_resume')
+def download_resume():
+    return send_file('static/resume.pdf', as_attachment=True)
