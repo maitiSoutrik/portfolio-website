@@ -101,3 +101,10 @@
 .experience-details.show {
     max-height: 1000px;
 }
+
+/* Profile image styles */
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
