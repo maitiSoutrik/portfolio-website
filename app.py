@@ -1,8 +1,6 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from database import init_db
 
 def create_app():
     app = Flask(__name__)
@@ -12,11 +10,8 @@ def create_app():
         "pool_recycle": 300,
         "pool_pre_ping": True,
     }
-    db.init_app(app)
 
-    with app.app_context():
-        from models import Contact, BlogPost
-        db.create_all()
+    init_db(app)
 
     from routes import init_routes
     init_routes(app)

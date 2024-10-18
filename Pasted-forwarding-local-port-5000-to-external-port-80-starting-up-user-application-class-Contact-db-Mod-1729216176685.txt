@@ -1,0 +1,313 @@
+forwarding local port 5000 to external port 80
+starting up user application
+    class Contact(db.Model):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+    super().__init__(name, bases, d, **kwargs)
+Traceback (most recent call last):
+    return _ClassScanMapperConfig(
+    instrumentation.register_class(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    manager._update_state(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+    _as_declarative(reg, cls, dict_)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    return _ClassScanMapperConfig(
+    super().__init__(name, bases, d, **kwargs)
+    raise exc.ArgumentError(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    class Contact(db.Model):
+    registry._add_manager(self)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+    _as_declarative(reg, cls, dict_)
+    from app import app
+    super().__init__(registry, cls_, mapper_kw)
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+Traceback (most recent call last):
+    super().__init__(registry, cls_, mapper_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+    raise exc.ArgumentError(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+command finished with error [sh -c python main.py]: exit status 1
+    instrumentation.register_class(
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+    import models
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+    import models
+    import models
+    class Contact(db.Model):
+Traceback (most recent call last):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+    manager._update_state(
+    from app import app
+    super().__init__(registry, cls_, mapper_kw)
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+    _as_declarative(reg, cls, dict_)
+Traceback (most recent call last):
+    class Contact(db.Model):
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+           ^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+    return _ClassScanMapperConfig(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    super().__init__(name, bases, d, **kwargs)
+Traceback (most recent call last):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+    registry._add_manager(self)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+    super().__init__(registry, cls_, mapper_kw)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+    super().__init__(registry, cls_, mapper_kw)
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    super().__init__(name, bases, d, **kwargs)
+    manager._update_state(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+    from app import app
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    manager._update_state(
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+    from app import app
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+    instrumentation.register_class(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+    from app import app
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+    manager._update_state(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+    registry._add_manager(self)
+command finished with error [sh -c python main.py]: exit status 1
+    instrumentation.register_class(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+    class Contact(db.Model):
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+    _as_declarative(reg, cls, dict_)
+    _as_declarative(reg, cls, dict_)
+    return _ClassScanMapperConfig(
+    return _ClassScanMapperConfig(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+    registry._add_manager(self)
+    raise exc.ArgumentError(
+    raise exc.ArgumentError(
+    import models
+    raise exc.ArgumentError(
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    super().__init__(name, bases, d, **kwargs)
+    import models
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+    registry._add_manager(self)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    instrumentation.register_class(
+    class Contact(db.Model):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+    _as_declarative(reg, cls, dict_)
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    super().__init__(registry, cls_, mapper_kw)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+Traceback (most recent call last):
+    raise exc.ArgumentError(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+    class Contact(db.Model):
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+    _as_declarative(reg, cls, dict_)
+    manager._update_state(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    super().__init__(registry, cls_, mapper_kw)
+Traceback (most recent call last):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    manager._update_state(
+    instrumentation.register_class(
+    return _ClassScanMapperConfig(
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+    from app import app
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+    super().__init__(name, bases, d, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+    import models
+    return _ClassScanMapperConfig(
+    import models
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+    registry._add_manager(self)
+    instrumentation.register_class(
+    super().__init__(name, bases, d, **kwargs)
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    from app import app
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+    registry._add_manager(self)
+    raise exc.ArgumentError(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    class Contact(db.Model):
+    return _ClassScanMapperConfig(
+    from app import app
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    super().__init__(name, bases, d, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    instrumentation.register_class(
+    super().__init__(name, bases, d, **kwargs)
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+    _as_declarative(reg, cls, dict_)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    import models
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+    super().__init__(registry, cls_, mapper_kw)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+    registry._add_manager(self)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+    manager._update_state(
+    raise exc.ArgumentError(
+Traceback (most recent call last):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+    from app import app
+    return _ClassScanMapperConfig(
+    class Contact(db.Model):
+    super().__init__(name, bases, d, **kwargs)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+Traceback (most recent call last):
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    raise exc.ArgumentError(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+    super().__init__(registry, cls_, mapper_kw)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    manager._update_state(
+    _as_declarative(reg, cls, dict_)
+    super().__init__(name, bases, d, **kwargs)
+    import models
+    import models
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    return _MapperConfig.setup_mapping(registry, cls, dict_, None, {})
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/app.py", line 21, in <module>
+    super().__init__(name, bases, d, **kwargs)
+    return _ClassScanMapperConfig(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+    instrumentation.register_class(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 196, in __init__
+    _as_declarative(reg, cls, dict_)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    raise exc.ArgumentError(
+    registry._add_manager(self)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 341, in __init__
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 120, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/models.py", line 4, in <module>
+    manager._update_state(
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 100, in __init__
+command finished with error [sh -c python main.py]: exit status 1
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 682, in register_class
+Traceback (most recent call last):
+    registry._add_manager(self)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_api.py", line 1379, in _add_manager
+    super().__init__(name, bases, d, **kwargs)
+    instrumentation.register_class(
+    super().__init__(registry, cls_, mapper_kw)
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 518, in __init__
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 244, in _as_declarative
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/decl_base.py", line 325, in setup_mapping
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/main.py", line 1, in <module>
+  File "/home/runner/d4a6cdc7-3502-44b5-8ece-6e42f8c556ba/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/instrumentation.py", line 207, in _update_state
+    class Contact(db.Model):
+    from app import app
+sqlalchemy.exc.ArgumentError: Class '<class 'models.Contact'>' already has a primary mapper defined. 
+command finished with error [sh -c python main.py]: exit status 1
+2024-10-18T01:44:58Z error: The deployment failed to initialize due to a configuration or code error. Check the logs tab for more information. For additional support, contact us at support@replit.com. 

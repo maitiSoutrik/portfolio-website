@@ -2,7 +2,7 @@ import os
 import requests
 from flask import render_template, request, jsonify, redirect, url_for, send_file
 from models import Contact, BlogPost
-from app import db
+from database import db
 from generate_resume import generate_resume
 
 # Generate the resume PDF when the application starts
