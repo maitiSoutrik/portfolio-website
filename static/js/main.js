@@ -20,33 +20,28 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchGitHubProjects() {
     try {
         const response = await fetch('/api/github_projects');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const projects = await response.json();
-        const filteredProjects = filterProjects(projects);
-        const projectsWithReadme = await Promise.all(filteredProjects.map(fetchReadmeContent));
+        const projectsWithReadme = await Promise.all(projects.map(fetchReadmeContent));
         displayProjects(projectsWithReadme);
     } catch (error) {
         console.error('Error fetching GitHub projects:', error);
+        const projectsContainer = document.getElementById('projects-container');
+        if (projectsContainer) {
+            projectsContainer.innerHTML = '<div class="alert alert-danger">Failed to load projects. Please try again later.</div>';
+        }
     }
-}
-
-function filterProjects(projects) {
-    const allowedProjects = [
-        'CppND-Route-Planning-Project',
-        'EmbeddedC-Game-Dev-Pong-Replica',
-        'CppND-System-Monitor',
-        'CppND-Memory-Management-Chatbot',
-        'CppND-Program-a-Concurrent-Traffic-Simulation',
-        'makingEmbeddedSystems'
-    ];
-    return projects.filter(project => allowedProjects.includes(project.name));
 }
 
 async function fetchReadmeContent(project) {
     try {
         const readmeResponse = await fetch(`https://api.github.com/repos/${project.full_name}/readme`);
-        const readmeData = await readmeResponse.json();
-        const readmeContent = atob(readmeData.content);
-        project.readmeContent = readmeContent;
+        if (readmeResponse.ok) {
+            const readmeData = await readmeResponse.json();
+            project.readmeContent = atob(readmeData.content);
+        }
     } catch (error) {
         console.error(`Error fetching README for ${project.name}:`, error);
         project.readmeContent = '';

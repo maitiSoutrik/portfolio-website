@@ -16,7 +16,7 @@ def init_routes(app):
     @app.route('/api/github_projects')
     def github_projects():
         username = 'maitiSoutrik'
-        url = f'https://api.github.com/users/{username}/repos'
+        url = f'https://api.github.com/users/{username}/starred'
         headers = {}
         if github_token := os.environ.get("GITHUB_TOKEN"):
             headers['Authorization'] = f'token {github_token}'
