@@ -18,17 +18,24 @@ def init_routes(app):
         username = 'maitiSoutrik'
         url = f'https://api.github.com/users/{username}/starred'
         headers = {}
-        if github_token := os.environ.get("GITHUB_TOKEN"):
+
+        # Get GitHub token from environment and add to headers if available
+        if github_token := os.getenv('GITHUB_TOKEN'):
             headers['Authorization'] = f'Bearer {github_token}'
-        try:
-            response = requests.get(url, headers=headers)
-            if response.status_code == 200:
-                projects = response.json()
-                return jsonify(projects)
-            else:
-                return jsonify({'error': f'GitHub API returned status {response.status_code}'}), response.status_code
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
+            try:
+                response = requests.get(url, headers=headers, timeout=10)
+                if response.status_code == 200:
+                    projects = response.json()
+                    return jsonify(projects)
+                else:
+                    app.logger.error(f'GitHub API error: {response.status_code} - {response.text}')
+                    return jsonify({'error': f'GitHub API returned status {response.status_code}'}), response.status_code
+            except requests.exceptions.RequestException as e:
+                app.logger.error(f'Request error: {str(e)}')
+                return jsonify({'error': str(e)}), 500
+        else:
+            app.logger.error('GitHub token not found in environment')
+            return jsonify({'error': 'GitHub token not configured'}), 401
 
     @app.route('/api/contact', methods=['POST'])
     def contact():
