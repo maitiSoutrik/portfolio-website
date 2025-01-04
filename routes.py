@@ -1,8 +1,8 @@
 import os
 import requests
 from flask import render_template, request, jsonify, redirect, url_for, send_file
-from models import Contact, BlogPost
 from database import db
+from models import Contact, BlogPost
 from generate_resume import generate_resume
 
 # Generate the resume PDF when the application starts
@@ -19,7 +19,7 @@ def init_routes(app):
         url = f'https://api.github.com/users/{username}/starred'
         headers = {}
         if github_token := os.environ.get("GITHUB_TOKEN"):
-            headers['Authorization'] = f'token {github_token}'
+            headers['Authorization'] = f'Bearer {github_token}'
         try:
             response = requests.get(url, headers=headers)
             if response.status_code == 200:

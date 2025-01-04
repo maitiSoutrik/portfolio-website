@@ -11,8 +11,10 @@ def create_app():
         "pool_pre_ping": True,
     }
 
+    # Initialize database
     init_db(app)
 
+    # Import and register routes after database initialization
     from routes import init_routes
     init_routes(app)
 
