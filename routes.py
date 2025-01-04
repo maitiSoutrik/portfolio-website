@@ -5,16 +5,35 @@ from database import db
 from models import Contact, BlogPost
 from generate_resume import generate_resume
 
-# Custom project descriptions
+# Custom project details with user-friendly names and descriptions
 PROJECT_DETAILS = {
     "CppND-Route-Planning-Project": {
-        "description": """An OpenStreetMap route planner implementing the A* search algorithm in C++. 
-        This project demonstrates advanced path finding capabilities using real map data. Key features include:
-        - Implementation of A* search algorithm for efficient path finding
-        - Integration with OpenStreetMap data for real-world navigation
-        - Optimized performance using modern C++ features
-        - Cross-platform compatibility and easy-to-use interface""",
+        "friendly_name": "Interactive Route Planner",
+        "description": """An intelligent navigation system that finds the optimal path between two points on a map. 
+        Built with modern C++, this application:
+        - Calculates the fastest route between locations
+        - Uses real-world map data for accurate navigation
+        - Implements advanced pathfinding algorithms
+        - Provides an intuitive interface for route visualization""",
         "image": "https://raw.githubusercontent.com/maitiSoutrik/CppND-Route-Planning-Project/master/map.png"
+    },
+    "SFND_Radar_Target_Generation": {
+        "friendly_name": "Radar Target Detection System",
+        "description": """A sophisticated radar system simulation that can detect and track moving objects.
+        This project showcases:
+        - Real-time target detection capabilities
+        - Advanced signal processing techniques
+        - Accurate velocity and range measurements
+        - Professional-grade radar technology implementation"""
+    },
+    "SFND_Unscented_Kalman_Filter": {
+        "friendly_name": "Advanced Vehicle Tracking System",
+        "description": """A state-of-the-art vehicle tracking system using advanced filtering techniques.
+        Key features include:
+        - Precise vehicle position prediction
+        - Real-time motion tracking
+        - Robust noise handling
+        - High-accuracy state estimation"""
     }
 }
 
@@ -35,7 +54,6 @@ def init_routes(app):
             'Content-Type': 'application/json',
         }
 
-        # GraphQL query to fetch pinned repositories
         query = """
         {
           user(login: "maitiSoutrik") {
@@ -78,21 +96,19 @@ def init_routes(app):
                     app.logger.error(f'GitHub GraphQL API error: {data["errors"]}')
                     return jsonify({'error': 'Failed to fetch pinned repositories'}), 500
 
-                # Transform GraphQL response to match the existing frontend expectations
                 repos = []
                 for repo in data['data']['user']['pinnedItems']['nodes']:
+                    project_details = PROJECT_DETAILS.get(repo['name'], {})
                     transformed_repo = {
                         'name': repo['name'],
-                        'description': PROJECT_DETAILS.get(repo['name'], {}).get('description', repo['description']),
+                        'friendly_name': project_details.get('friendly_name', repo['name']),
+                        'description': project_details.get('description', repo['description']),
                         'html_url': repo['url'],
-                        'stargazers_count': repo['stargazerCount'],
-                        'forks_count': repo['forkCount'],
                         'language': repo['primaryLanguage']['name'] if repo['primaryLanguage'] else None,
                         'updated_at': repo['updatedAt'],
-                        'open_issues_count': repo['openIssueCount']['totalCount'],
                         'license': {'name': repo['licenseInfo']['name']} if repo['licenseInfo'] else None,
                         'full_name': f"maitiSoutrik/{repo['name']}",
-                        'image': PROJECT_DETAILS.get(repo['name'], {}).get('image', None)
+                        'image': project_details.get('image', None)
                     }
                     repos.append(transformed_repo)
 

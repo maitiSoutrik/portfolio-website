@@ -71,30 +71,26 @@ function createProjectCard(project) {
 
     card.innerHTML = `
         <div class="card project-card h-100">
-            <img src="${imageUrl}" class="card-img-top" alt="${project.name} image" onerror="this.src='/static/img/placeholder.svg'">
+            <img src="${imageUrl}" class="card-img-top" alt="${project.friendly_name || project.name} image" onerror="this.src='/static/img/placeholder.svg'">
             <div class="card-body">
-                <h5 class="card-title">${project.name}</h5>
+                <h5 class="card-title">${project.friendly_name || project.name}</h5>
                 <p class="card-text">${project.description || 'No description available.'}</p>
                 <p class="card-text">
-                    <small class="text-muted">
-                        <i class="fas fa-star"></i> ${project.stargazers_count} 
-                        <i class="fas fa-code-branch ml-2"></i> ${project.forks_count}
-                    </small>
+                    <small class="text-muted">Built with ${project.language || 'Various Technologies'}</small>
                 </p>
-                <p class="card-text">
-                    <small class="text-muted">Language: ${project.language || 'Not specified'}</small>
-                </p>
+                <a href="${project.html_url}" target="_blank" class="btn btn-primary w-100 mb-2">
+                    <i class="fab fa-github"></i> View Project on GitHub
+                </a>
             </div>
             <div class="card-footer">
-                <a href="${project.html_url}" target="_blank" class="btn btn-outline-primary btn-sm">View on GitHub</a>
-                <button class="btn btn-outline-secondary btn-sm float-end toggle-details" data-target="details-${project.id}">
-                    Show Details
+                <button class="btn btn-outline-secondary btn-sm w-100 toggle-details" data-target="details-${project.id}">
+                    Show Technical Details
                 </button>
             </div>
             <div id="details-${project.id}" class="card-body project-details" style="display: none;">
                 <h6>Last Updated: ${new Date(project.updated_at).toLocaleDateString()}</h6>
-                <h6>Open Issues: ${project.open_issues_count}</h6>
                 <h6>License: ${project.license ? project.license.name : 'Not specified'}</h6>
+                <p class="text-muted small">Repository: ${project.name}</p>
             </div>
         </div>
     `;
@@ -105,7 +101,7 @@ function createProjectCard(project) {
     toggleButton.addEventListener('click', () => {
         const isHidden = detailsSection.style.display === 'none';
         detailsSection.style.display = isHidden ? 'block' : 'none';
-        toggleButton.textContent = isHidden ? 'Hide Details' : 'Show Details';
+        toggleButton.textContent = isHidden ? 'Hide Technical Details' : 'Show Technical Details';
     });
 
     return card;
