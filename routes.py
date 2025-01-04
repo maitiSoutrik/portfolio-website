@@ -17,13 +17,18 @@ def init_routes(app):
     def github_projects():
         username = 'maitiSoutrik'
         url = f'https://api.github.com/users/{username}/repos'
-        headers = {'Authorization': f'token {os.environ.get("GITHUB_TOKEN")}'}
-        response = requests.get(url, headers=headers)
-        if response.status_code == 200:
-            projects = response.json()
-            return jsonify(projects)
-        else:
-            return jsonify({'error': 'Unable to fetch GitHub projects'}), 500
+        headers = {}
+        if github_token := os.environ.get("GITHUB_TOKEN"):
+            headers['Authorization'] = f'token {github_token}'
+        try:
+            response = requests.get(url, headers=headers)
+            if response.status_code == 200:
+                projects = response.json()
+                return jsonify(projects)
+            else:
+                return jsonify({'error': f'GitHub API returned status {response.status_code}'}), response.status_code
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/api/contact', methods=['POST'])
     def contact():
