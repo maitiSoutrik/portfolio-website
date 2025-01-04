@@ -14,7 +14,7 @@ PROJECT_DETAILS = {
         - Integration with OpenStreetMap data for real-world navigation
         - Optimized performance using modern C++ features
         - Cross-platform compatibility and easy-to-use interface""",
-        "image": "/static/img/projects/route_planning_map.svg"
+        "image": "/static/img/projects/osm_map_example.png"
     }
 }
 
