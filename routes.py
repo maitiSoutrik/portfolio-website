@@ -14,7 +14,7 @@ PROJECT_DETAILS = {
         - Integration with OpenStreetMap data for real-world navigation
         - Optimized performance using modern C++ features
         - Cross-platform compatibility and easy-to-use interface""",
-        "image": "/static/img/projects/osm_map_example.png"
+        "image": "https://raw.githubusercontent.com/maitiSoutrik/CppND-Route-Planning-Project/master/map.png"
     }
 }
 
