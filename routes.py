@@ -15,27 +15,84 @@ def init_routes(app):
 
     @app.route('/api/github_projects')
     def github_projects():
-        username = 'maitiSoutrik'
-        url = f'https://api.github.com/users/{username}/starred'
-        headers = {}
-
-        # Get GitHub token from environment and add to headers if available
-        if github_token := os.getenv('GITHUB_TOKEN'):
-            headers['Authorization'] = f'Bearer {github_token}'
-            try:
-                response = requests.get(url, headers=headers, timeout=10)
-                if response.status_code == 200:
-                    projects = response.json()
-                    return jsonify(projects)
-                else:
-                    app.logger.error(f'GitHub API error: {response.status_code} - {response.text}')
-                    return jsonify({'error': f'GitHub API returned status {response.status_code}'}), response.status_code
-            except requests.exceptions.RequestException as e:
-                app.logger.error(f'Request error: {str(e)}')
-                return jsonify({'error': str(e)}), 500
-        else:
+        github_token = os.getenv('GITHUB_TOKEN')
+        if not github_token:
             app.logger.error('GitHub token not found in environment')
             return jsonify({'error': 'GitHub token not configured'}), 401
+
+        headers = {
+            'Authorization': f'Bearer {github_token}',
+            'Content-Type': 'application/json',
+        }
+
+        # GraphQL query to fetch pinned repositories
+        query = """
+        {
+          user(login: "maitiSoutrik") {
+            pinnedItems(first: 6, types: REPOSITORY) {
+              nodes {
+                ... on Repository {
+                  name
+                  description
+                  url
+                  stargazerCount
+                  forkCount
+                  primaryLanguage {
+                    name
+                  }
+                  updatedAt
+                  openIssueCount: issues(states: OPEN) {
+                    totalCount
+                  }
+                  licenseInfo {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
+
+        try:
+            response = requests.post(
+                'https://api.github.com/graphql',
+                headers=headers,
+                json={'query': query},
+                timeout=10
+            )
+
+            if response.status_code == 200:
+                data = response.json()
+                if 'errors' in data:
+                    app.logger.error(f'GitHub GraphQL API error: {data["errors"]}')
+                    return jsonify({'error': 'Failed to fetch pinned repositories'}), 500
+
+                # Transform GraphQL response to match the existing frontend expectations
+                repos = []
+                for repo in data['data']['user']['pinnedItems']['nodes']:
+                    transformed_repo = {
+                        'name': repo['name'],
+                        'description': repo['description'],
+                        'html_url': repo['url'],
+                        'stargazers_count': repo['stargazerCount'],
+                        'forks_count': repo['forkCount'],
+                        'language': repo['primaryLanguage']['name'] if repo['primaryLanguage'] else None,
+                        'updated_at': repo['updatedAt'],
+                        'open_issues_count': repo['openIssueCount']['totalCount'],
+                        'license': {'name': repo['licenseInfo']['name']} if repo['licenseInfo'] else None,
+                        'full_name': f"maitiSoutrik/{repo['name']}"
+                    }
+                    repos.append(transformed_repo)
+
+                return jsonify(repos)
+            else:
+                app.logger.error(f'GitHub API error: {response.status_code} - {response.text}')
+                return jsonify({'error': f'GitHub API returned status {response.status_code}'}), response.status_code
+
+        except requests.exceptions.RequestException as e:
+            app.logger.error(f'Request error: {str(e)}')
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/api/contact', methods=['POST'])
     def contact():
