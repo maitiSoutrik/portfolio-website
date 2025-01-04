@@ -18,13 +18,14 @@ PROJECT_DETAILS = {
         "image": "https://raw.githubusercontent.com/maitiSoutrik/CppND-Route-Planning-Project/master/map.png"
     },
     "SFND_Radar_Target_Generation": {
-        "friendly_name": "Radar Target Detection System",
-        "description": """A sophisticated radar system simulation that can detect and track moving objects.
+        "friendly_name": "Smart Radar Detection System",
+        "description": """A sophisticated radar system simulation that can detect and track moving objects in real-time.
         This project showcases:
-        - Real-time target detection capabilities
-        - Advanced signal processing techniques
-        - Accurate velocity and range measurements
-        - Professional-grade radar technology implementation"""
+        - Automated object detection for enhanced safety
+        - Real-time tracking of moving vehicles and obstacles
+        - Precise distance and speed measurements
+        - Technology similar to modern autonomous driving systems""",
+        "image": "https://raw.githubusercontent.com/maitiSoutrik/SFND_Radar_Target_Generation/master/images/FFT_dopper_velocity.jpg"
     },
     "SFND_Unscented_Kalman_Filter": {
         "friendly_name": "Advanced Vehicle Tracking System",
