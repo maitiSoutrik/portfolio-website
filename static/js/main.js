@@ -65,9 +65,10 @@ function displayProjects(projects) {
 function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'col-md-6 col-lg-4 mb-4';
-    
-    const imageUrl = extractImageFromReadme(project.readmeContent) || '/static/img/placeholder.svg';
-    
+
+    // Use custom project image if available, fallback to README image or placeholder
+    const imageUrl = project.image || extractImageFromReadme(project.readmeContent) || '/static/img/placeholder.svg';
+
     card.innerHTML = `
         <div class="card project-card h-100">
             <img src="${imageUrl}" class="card-img-top" alt="${project.name} image" onerror="this.src='/static/img/placeholder.svg'">

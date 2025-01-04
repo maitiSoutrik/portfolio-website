@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Map background -->
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  
+  <!-- Grid lines -->
+  <g stroke="#dee2e6" stroke-width="1">
+    <path d="M 50,50 L 750,50" />
+    <path d="M 50,150 L 750,150" />
+    <path d="M 50,250 L 750,250" />
+    <path d="M 50,350 L 750,350" />
+    <path d="M 50,450 L 750,450" />
+    <path d="M 50,550 L 750,550" />
+  </g>
+  
+  <!-- Route path -->
+  <path d="M 100,500 Q 300,300 500,200 T 700,100" 
+        stroke="#0d6efd" 
+        stroke-width="3" 
+        fill="none"
+        stroke-dasharray="5,5"/>
+  
+  <!-- Start and end points -->
+  <circle cx="100" cy="500" r="8" fill="#198754"/>
+  <circle cx="700" cy="100" r="8" fill="#dc3545"/>
+  
+  <!-- Waypoints -->
+  <circle cx="300" cy="300" r="5" fill="#0dcaf0"/>
+  <circle cx="500" cy="200" r="5" fill="#0dcaf0"/>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 30)" font-family="Arial" font-size="14">
+    <circle cx="10" cy="0" r="8" fill="#198754"/>
+    <text x="25" y="5">Start Point</text>
+    
+    <circle cx="110" cy="0" r="8" fill="#dc3545"/>
+    <text x="125" y="5">End Point</text>
+    
+    <circle cx="210" cy="0" r="5" fill="#0dcaf0"/>
+    <text x="225" y="5">Waypoint</text>
+  </g>
+</svg>

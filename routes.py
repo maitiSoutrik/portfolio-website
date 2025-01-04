@@ -5,8 +5,18 @@ from database import db
 from models import Contact, BlogPost
 from generate_resume import generate_resume
 
-# Generate the resume PDF when the application starts
-generate_resume()
+# Custom project descriptions
+PROJECT_DETAILS = {
+    "CppND-Route-Planning-Project": {
+        "description": """An OpenStreetMap route planner implementing the A* search algorithm in C++. 
+        This project demonstrates advanced path finding capabilities using real map data. Key features include:
+        - Implementation of A* search algorithm for efficient path finding
+        - Integration with OpenStreetMap data for real-world navigation
+        - Optimized performance using modern C++ features
+        - Cross-platform compatibility and easy-to-use interface""",
+        "image": "/static/img/projects/route_planning_map.svg"
+    }
+}
 
 def init_routes(app):
     @app.route('/')
@@ -73,7 +83,7 @@ def init_routes(app):
                 for repo in data['data']['user']['pinnedItems']['nodes']:
                     transformed_repo = {
                         'name': repo['name'],
-                        'description': repo['description'],
+                        'description': PROJECT_DETAILS.get(repo['name'], {}).get('description', repo['description']),
                         'html_url': repo['url'],
                         'stargazers_count': repo['stargazerCount'],
                         'forks_count': repo['forkCount'],
@@ -81,7 +91,8 @@ def init_routes(app):
                         'updated_at': repo['updatedAt'],
                         'open_issues_count': repo['openIssueCount']['totalCount'],
                         'license': {'name': repo['licenseInfo']['name']} if repo['licenseInfo'] else None,
-                        'full_name': f"maitiSoutrik/{repo['name']}"
+                        'full_name': f"maitiSoutrik/{repo['name']}",
+                        'image': PROJECT_DETAILS.get(repo['name'], {}).get('image', None)
                     }
                     repos.append(transformed_repo)
 
